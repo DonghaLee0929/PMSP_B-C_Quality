@@ -484,10 +484,10 @@ class Sequence:
                 model.add_hint(start_time[job], eddst)
                 if previous_job is not None:
                     model.add_hint(relation[previous_job, job], True)
+                    if fam != previous_fam:
+                        model.add_hint(setup[previous_job, job], True)
+                        setup_bound += 1
                 previous_job = job
-
-                if previous_fam is not None and fam != previous_fam:
-                    setup_bound += 1
                 previous_fam = fam
 
             model.add_hint(relation[-1, self.EDD[machine_index][0][0]], True) # for earliest start time
@@ -638,12 +638,12 @@ def global_cp(env: Env, Gamma, Lambda, time_limit, viz=True):
 "lower bound:", solver.best_objective_bound, "time:", round(solver.WallTime(), 2))
     if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
         if status == cp_model.OPTIMAL:
-            return solver.objective_value, round(solver.WallTime(), 2), True, solution_printer.first_solution, solution_printer.first_solution_time
+            return solver.objective_value, solver.best_objective_bound, round(solver.WallTime(), 2), True, solution_printer.first_solution, solution_printer.first_solution_time
         else:
-            return solver.objective_value, round(solver.WallTime(), 2), -1, solution_printer.first_solution, solution_printer.first_solution_time
+            return solver.objective_value, solver.best_objective_bound, round(solver.WallTime(), 2), -1, solution_printer.first_solution, solution_printer.first_solution_time
     elif status == cp_model.INFEASIBLE:
-        return False, round(solver.WallTime(), 2), -1, -1, -1
+        return False, -1, round(solver.WallTime(), 2), -1, -1, -1
     else:
         print("time limit over")
-        return solver.objective_value, round(solver.WallTime(), 2), -1, solution_printer.first_solution, solution_printer.first_solution_time
+        return solver.objective_value, solver.best_objective_bound, round(solver.WallTime(), 2), -1, solution_printer.first_solution, solution_printer.first_solution_time
         

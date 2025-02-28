@@ -169,3 +169,11 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+result/nn_test.csv
+
+model.pt
+framework_NN.ipynb
+Assignment_NN.py
+neuralnet.py
+utills_NN.py

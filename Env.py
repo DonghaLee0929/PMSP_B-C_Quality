@@ -59,12 +59,12 @@ class Environment:
         if tight in ['low', 'very_low', 'base']:
             return int(rng.triangular(left=a, mode=b, right=b))
         elif tight == 'high':
-            if rng.random() < 0.5:
+            if rng.random() < 0.25:
                 return rng.integers(a, b)
             else:
                 return int(rng.triangular(left=a, mode=b, right=b))
         elif tight == 'very_high':
-            if rng.random() < 0.6:
+            if rng.random() < 0.5:
                 return rng.integers(a, b)
             else:
                 return int(rng.triangular(left=a, mode=b, right=b))
@@ -99,7 +99,7 @@ class Environment:
         
         # Initialize job durations and deadlines
         self.deadline = np.zeros(self.job_num, dtype=int)
-        self.duration = rng.integers(5, 15, size=self.job_num)
+        self.duration = rng.integers(1, 20, size=self.job_num)
         
         # Compute deadline distribution parameters
         a = 5 * self.job_num / self.machine_num

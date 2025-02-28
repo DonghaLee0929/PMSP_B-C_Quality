@@ -26,6 +26,7 @@ class Datarecoder:
         self.cp_feasible_time = -1
         self.cp_status = -1
         self.cp_value = -1
+        self.cp_lb = -1
         self.cp_time = -1
 
     def _convert_value(self, value):
@@ -40,7 +41,7 @@ class Datarecoder:
             writer = csv.writer(f)
             writer.writerow(['first_feasible_sol', 'first_feasible_time', 
                             'total_ban_num', 'objective_value', 'total_iter_num', 'total_time', 
-                            'cp_feasible_sol', 'cp_feasible_time', 'optimal', 'cp_value', 'cp_time'])
+                            'cp_feasible_sol', 'cp_feasible_time', 'optimal', 'cp_value', 'cp_lb', 'cp_time'])
 
     def write_result_to_csv(self):
         if self.total_time > 3600: self.total_time = 3600
@@ -59,6 +60,7 @@ class Datarecoder:
                 self._convert_value(self.cp_feasible_time),
                 self._convert_value(self.cp_status),
                 self._convert_value(self.cp_value),
+                self._convert_value(self.cp_lb),
                 self._convert_value(self.cp_time)
             ])
 
@@ -384,7 +386,7 @@ def framework(env: Env, Gamma: float, Lambda: float, delta: float, recoder: Data
     """
     start_time = time.time()
 
-    best = env.job_num  # Initialize the best objective value as the total number of jobs
+    best = env.job_num - env.machine_num  # Initialize the best objective value as trivial upper bound
     best_schedule = None
     best_assign_lb = None
     guide = Guide()  # Guide information: holds minimal setup value details
