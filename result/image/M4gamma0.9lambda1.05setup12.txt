@@ -1,0 +1,30 @@
+=================================================================
+ 📊 Schedule Performance Analysis Report
+=================================================================
+1. Productivity & Speed
+   - Makespan (Max Completion Time)       : 14.0
+   - Mean Flow Time (Avg Completion)      : 7.5
+   - Throughput (Jobs per unit time)      : 46.2857
+   - Avg Utilization (vs Time Horizon)    : 96.43%
+   - Load Imbalance (Std Dev)             : 6.36
+-----------------------------------------------------------------
+2. Machine Efficiency (New Metric)
+   * Effective Processing Ratio = Process / (Process + Setup)
+   - Avg Effective Processing Ratio       : 98.16%
+   - Min Effective Processing Ratio       : 84.62%
+   - Per Machine Eff. Ratios              : [100.0, 100.0, np.float64(91.7), 100.0, 100.0, 100.0, np.float64(84.6), 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, np.float64(92.9), 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, np.float64(92.9), 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, np.float64(92.9), 100.0, 100.0, 100.0, 100.0, 100.0, np.float64(92.3), 100.0, np.float64(92.9), 100.0, np.float64(92.9), np.float64(92.9), 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, np.float64(92.9), np.float64(92.9), 100.0]
+-----------------------------------------------------------------
+3. Service Level (Due Date Compliance)
+   - Total Tardiness                      : 0.0
+   - Tardy Rate                           : 0.0% (0/648 jobs)
+   - Max Tardiness                        : 0.0
+-----------------------------------------------------------------
+4. Setup Analysis (Setup Time: 1)
+   - Total Family Switches                : 12
+   - Total Time Lost to Setup             : 12.0
+   - Setup Ratio (Switches/Total Jobs)    : 1.9%
+-----------------------------------------------------------------
+5. Quality
+   - Expected Yield                       : 0.952
+   - Expected Risk                        : 1.042
+=================================================================

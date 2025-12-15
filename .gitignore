@@ -169,3 +169,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+case_study_data/
+model.ilp
+experiment_case_study.py
+*expert*
+result/image/*.png
