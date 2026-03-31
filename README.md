@@ -6,16 +6,16 @@ This repository provides the implementation of the research paper:
 
 ## Overview
 
-This project addresses a complex scheduling problem originating from a real-world **wafer manufacturing** process. It focuses on the **Parallel Machine Scheduling Problem (PMSP)** with the following characteristics:
+This project addresses a scheduling problem originating from a real-world **wafer manufacturing** process. It focuses on the **Parallel Machine Scheduling Problem (PMSP)** with the following characteristics:
 * **Sequence-dependent setup times**
 * **Quality constraints**
 * **Strict deadlines**
 
-The primary objective is to **minimize the total number of setups** required during the production process.
+The objective is to **minimize the total number of setups** required during the production process.
 
 ## Methodology
 
-The solution is built on a **Logic-Based Benders Decomposition (LBBD)** approach, specifically utilizing a **Branch-and-Check** framework to efficiently solve the integrated assignment and sequencing problem.
+The solution is built on a **Logic-Based Benders Decomposition (LBBD)** (**Branch-and-Check**) approach to efficiently solve the integrated assignment and sequencing problem.
 
 ### Key Components
 The LBBD logic is modularized into the following files:
